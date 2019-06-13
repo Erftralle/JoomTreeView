@@ -56,7 +56,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <?php   if($jgTreeviewHelper->getConfig('show_credits') == 1) : ?>
     <div class="jgtreeview_footer">
       <?php echo JText::_('MOD_JGTREEVIEW_ICONS_BY_LBL'); ?>&nbsp;
-      <a href="http://www.famfamfam.de" target="_blank" title="" >
+      <a href="http://www.famfamfam.com" target="_blank" title="" >
         www.famfamfam.com</a>
     </div>
 <?php   endif; ?>
