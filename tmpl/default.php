@@ -1,6 +1,4 @@
 <?php
-// $HeadURL: https://joomgallery.org/svn/joomgallery/JG-3/Modules/JoomTreeview/trunk/tmpl/default.php $
-// $Id: default.php 4297 2013-06-06 21:21:10Z erftralle $
 /**
 * Module JoomGallery Treeview
 * by JoomGallery::Project Team
