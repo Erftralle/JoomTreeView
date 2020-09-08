@@ -84,7 +84,14 @@ class modJgTreeViewHelper extends JoomInterface
     $this->addConfig('sort_cat', $params->get('cfg_sort_cat', 'name ASC'));
     $this->addConfig('sort_subcat', $params->get('cfg_sort_subcat', 'name ASC'));
     $this->addConfig('max_len_catname', intval( $params->get('cfg_max_len_catname', 0)));
-    $this->addConfig('blacklist_cats', $this->cleanCSV($params->get('cfg_blacklist_cats', '')));
+    if(is_array($params->get('cfg_blacklist_cats', '')))
+    {
+      $this->addConfig('blacklist_cats', implode(',', $params->get('cfg_blacklist_cats', '')));
+    }
+    else
+    {
+      $this->addConfig('blacklist_cats', '');
+    }
 
     // User mode
     $this->addConfig('usrmode', intval($params->get('cfg_usrmode', 1)));
@@ -427,27 +434,6 @@ class modJgTreeViewHelper extends JoomInterface
       }
     }
     return $openToNode;
-  }
-
-  /**
-   * Function to clean a CSV list.
-   *
-   * @param    string    $csv_list
-   * @return   string    $csv_list  cleaned CSV list
-   */
-  protected function cleanCSV($csv_list)
-  {
-    $search[0]  = '/[^0-9,]/m';
-    $search[1]  = '/,{2,}/m';
-    $search[2]  = '/,+$/m';
-    $search[3]  = '/^,+/m';
-    $replace[0] = ',';
-    $replace[1] = ',';
-    $replace[2] = '';
-    $replace[3] = '';
-    $csv_list   = preg_replace($search, $replace, trim($csv_list));
-
-    return $csv_list;
   }
 
   /**
