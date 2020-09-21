@@ -2,7 +2,7 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
   <name>mod_jgtreeview</name>
   <author>JoomGallery::Project Team</author>
-  <creationDate>2020/09/08</creationDate>
+  <creationDate>2020/09/21</creationDate>
   <authorUrl>www.joomgalleryfriends.net</authorUrl>
   <copyright>(C) 2009 - 2020 JoomGallery::Project Team</copyright>
   <license>This module is released under the GNU/GPL License</license>

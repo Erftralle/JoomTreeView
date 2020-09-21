@@ -37,8 +37,14 @@ Legende / Legend:
 ! -> Note
 
 -------------------------------------------------------------------
-Version 3.x.x
+Version 3.1.1
 -------------------------------------------------------------------
+20200921
+# Loading JoomInterface class in helper.php to avoid error
+  when using the joomla updater
+^ Improving category selection
+- Removing double license file
+
 20190613
 ^ Fix link to the website of the SILK ICONS
 
