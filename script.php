@@ -24,14 +24,14 @@
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 
 /**
- * Installer srcipt file for module JoomCategories called by the installer of Joomla!
+ * Installer srcipt file for module JoomTreeView called by the installer of Joomla!
  *
  * @since   3.1.1
  */
 class mod_jgtreeviewInstallerScript
 {
   /**
-   * The JoomCategories version we are updating from
+   * The JoomTreeView version we are updating from
    *
    * @var    string
    * @since  3.1.1
@@ -123,7 +123,7 @@ class mod_jgtreeviewInstallerScript
     {
       if(!empty($this->fromVersion) && version_compare($this->fromVersion, '3.1.1', 'lt'))
       {
-        // Get all JoomCategories modules
+        // Get all JoomTreeView modules
         $db    = JFactory::getDbo();
         $query = $db->getQuery(true);
 
