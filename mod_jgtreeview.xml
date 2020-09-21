@@ -2,11 +2,11 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
   <name>mod_jgtreeview</name>
   <author>JoomGallery::Project Team</author>
-  <creationDate>2019/04/08</creationDate>
+  <creationDate>2020/09/08</creationDate>
   <authorUrl>www.joomgalleryfriends.net</authorUrl>
-  <copyright>(C) 2009 - 2019 JoomGallery::Project Team</copyright>
+  <copyright>(C) 2009 - 2020 JoomGallery::Project Team</copyright>
   <license>This module is released under the GNU/GPL License</license>
-  <version>3.1.0</version>
+  <version>3.1.1</version>
   <description>MOD_JGTREEVIEW_DESC</description>
   <files>
     <filename module="mod_jgtreeview">mod_jgtreeview.php</filename>
@@ -105,6 +105,7 @@
    <language tag="nl-NL">language/nl-NL/nl-NL.mod_jgtreeview.ini</language>
    <language tag="nl-NL">language/nl-NL/nl-NL.mod_jgtreeview.sys.ini</language>
   </languages>
+  <scriptfile>script.php</scriptfile>
   <config>
     <fields name="params" addfieldpath="administrator/components/com_joomgallery/models/fields" addrulepath="administrator/components/com_joomgallery/models/rules">
       <fieldset name="MOD_JGTREEVIEW_COMMON_PARAMETER_LBL" label="MOD_JGTREEVIEW_COMMON_PARAMETER_LBL">
@@ -114,8 +115,8 @@
           <field class="btn-group" name="cfg_usrmode" type="radio" default="0" label="MOD_JGTREEVIEW_USRMODE_LBL" description="MOD_JGTREEVIEW_USRMODE_DESC">
             <option value="0">MOD_JGTREEVIEW_NO_LBL</option>
             <option value="1">MOD_JGTREEVIEW_YES_LBL</option>
-          </field>            
-          <field name="cfg_root_catid" type="text" class="validate-numeric" default="1" label="MOD_JGTREEVIEW_ROOT_CATID_LBL" description="MOD_JGTREEVIEW_ROOT_CATID_DESC" required="true" />
+          </field>
+          <field name="cfg_root_catid" type="sql" default="1" query="SELECT cid, trim(concat(repeat('|—', level), ' ', name, ' (ID: ', cid, ')')) as showtitle FROM #__joomgallery_catg WHERE cid > 0 order by lft" key_field="cid" value_field="showtitle" label="MOD_JGTREEVIEW_ROOT_CATID_LBL" description="MOD_JGTREEVIEW_ROOT_CATID_DESC" required="true" class="input-xlarge" showon="cfg_usrmode:0" />
           <field name="cfg_name" type="text" default="" label="MOD_JGTREEVIEW_NAME_LBL" description="MOD_JGTREEVIEW_NAME_DESC" />
           <field name="cfg_sort_cat" type="list" default="0" label="MOD_JGTREEVIEW_SORT_CAT_LBL" description="MOD_JGTREEVIEW_SORT_CAT_DESC">
             <option value="name ASC">MOD_JGTREEVIEW_SORT_NAME_ASC_LBL</option>
@@ -133,8 +134,7 @@
             <option value="lft ASC">MOD_JGTREEVIEW_SORT_ORDERING_ASC_LBL</option>
             <option value="lft DESC">MOD_JGTREEVIEW_SORT_ORDERING_DESC_LBL</option>
           </field>
-          <field name="cfg_blacklist_cats" type="text" default="" label="MOD_JGTREEVIEW_BLACKLIST_CATS_LBL" description="MOD_JGTREEVIEW_BLACKLIST_CATS_DESC" />
-
+          <field name="cfg_blacklist_cats" type="sql" multiple="true" default="" query="SELECT cid, trim(concat(repeat('|—', level-1), ' ', name, ' (ID: ', cid, ')')) as showtitle FROM #__joomgallery_catg WHERE cid > 1 order by lft" key_field="cid" value_field="showtitle" label="MOD_JGTREEVIEW_BLACKLIST_CATS_LBL" description="MOD_JGTREEVIEW_BLACKLIST_CATS_DESC" class="input-xlarge" />
           <field name="cfg_nodelink" type="list" default="0" label="MOD_JGTREEVIEW_NODELINK_LBL" description="MOD_JGTREEVIEW_NODELINK_DESC">
             <option value="0">MOD_JGTREEVIEW_NODELINK_CATEGORY_VIEW</option>
             <option value="1">MOD_JGTREEVIEW_NODELINK_DEFAULT_DETAIL_VIEW</option>
